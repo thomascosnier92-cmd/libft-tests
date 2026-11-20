@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tcosnier <tcosnier@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/12 11:29:28 by tcosnier          #+#    #+#             */
-/*   Updated: 2026/11/12 14:08:06 by tcosnier         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
@@ -146,11 +134,11 @@ int main(void)
 
     printf("    --ISDIGIT TEST--\n\n");
     int ca;
-    ca = '1'; // ASCII value 49
+    ca = '1';
     printf(" %c = %d\n", ca, ft_isdigit(ca));
-    ca = '2'; // ASCII value 50
+    ca = '2';
     printf(" %c = %d\n", ca, ft_isdigit(ca));
-    ca = '3'; // ASCII value 51
+    ca = '3';
     printf(" %c = %d\n", ca, ft_isdigit(ca));
     printf("\n\n");
 
@@ -207,7 +195,6 @@ int main(void)
 
     
 	printf("    --LSTADDFRONT TEST--\n\n");
-	//t_list	*head, *node_1, *node_2;
 
 	head = malloc(sizeof(t_list));
 	node_1 = malloc(sizeof(t_list));
@@ -223,7 +210,6 @@ int main(void)
 	ft_lstadd_front(&head, node_1);
 	ft_lstadd_front(&head, node_2);
 
-	//t_list	*current;
 	
 	current = head;
 	while (current)
@@ -385,7 +371,6 @@ int main(void)
 	char sstr1[] = "omega";
 	char sstr2[sizeof(sstr1)] = "";
 
-	// Copies contents of sstr1 to sstr2
 	ft_memcpy(sstr2, sstr1, sizeof(sstr1));
 
 	printf("sstr2 after ft_memcpy: ");
@@ -397,7 +382,6 @@ int main(void)
     printf("    --MEMMOVE TEST--\n\n");
 	char	mmove[] = "123456789";
 
-	// Overlapping copy: source and destination share memory
 	printf("Before : %s\n", mmove);
 	ft_memmove(mmove + 2, mmove, 5);
 	printf("After  : %s\n", mmove);
@@ -501,25 +485,17 @@ int main(void)
     
 
     printf("    --STRLCPY TEST--\n\n");
-    	// 1. Define a source string and a destination buffer
 	const char *ssrc = "Hello, World!";
 	char ddest[14];
-		// The buffer size is intentionally smaller than the source string + 1
 
 	printf("Source string: \"%s\" (Length: %zu)\n", ssrc, strlen(ssrc));
 	printf("Destination buffer size: %zu\n\n", sizeof(ddest));
 
-	// 2. Execute strlcpy
-	// It copies up to (sizeof(ddest) - 1) characters and guarantees NUL-termination.
 	size_t rresult = ft_strlcpy(ddest, ssrc, sizeof(ddest));
 
-	// 3. Print the results
 	printf("Copied string in dest: \"%s\"\n", ddest);
 	printf("Return value of strlcpy (expected total length): %zu\n", rresult);
 
-	// 4. Check for truncation
-	// Truncation occurs if the return value is greater than or equal
-	// to the buffer size.
 	if (rresult >= sizeof(ddest)) {
 		printf("Warning: The string was truncated! You needed a buffer of at least %zu bytes.\n", rresult + 1);
 	} else {
